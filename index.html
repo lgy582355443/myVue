@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #app {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <input v-model="name">
+        <h2>{{name}}</h2>
+        <h1>{{num}}</h1>
+        <button v-on:click="clickMe">click me! +1</button>
+    </div>
+</body>
+<script src="js/observer.js"></script>
+<script src="js/watcher.js"></script>
+<script src="js/compile.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+
+    new MyVue({
+        el: '#app',
+        data: {
+            title: 'hello world',
+            name: 'vue双向绑定',
+            num: 0
+        },
+        methods: {
+            clickMe: function () {
+                this.num++
+            }
+        },
+        mounted: function () {
+            window.setTimeout(() => {
+                this.title = '你好';
+            }, 1000);
+        }
+    });
+
+</script>
+
+</html>
