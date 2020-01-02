@@ -4,6 +4,10 @@
 
 ![](https://raw.githubusercontent.com/lgy582355443/myVue/master/wd-img/GIF2.gif)
 
+## vue双向绑定原理
+
+vue.js采用的数据劫持结合发布订阅模式的方式，通过Object.defineProperty()来劫持各个属性的setter,getter,在数据变动时发布消息给订阅者，触发相应的回调。
+
 ## 思路分析
 
 实现mvvm主要包含两个方面，数据变化更新视图，视图变化更新数据：
@@ -12,7 +16,7 @@
 
 关键点在于data如何更新view，因为view更新data其实可以通过事件监听即可，比如input标签监听 'input' 事件就可以实现了。所以我们着重来分析下，当数据改变，如何更新视图的。
 
-数据更新视图的重点是如何知道数据变了，只要知道数据变了，那么接下去的事都好处理。如何知道数据变了，其实上文我们已经给出答案了，就是通过Object.defineProperty( )对属性设置一个set函数，当数据改变了就会来触发这个函数，所以我们只要将一些需要更新的方法放在这里面就可以实现data更新view了。
+数据更新视图的重点是如何知道数据变了，只要知道数据变了，那么接下去的事都好处理。如何知道数据变了，就是通过Object.defineProperty( )对属性设置一个set函数，当数据改变了就会来触发这个函数，所以我们只要将一些需要更新的方法放在这里面就可以实现data更新view了。
 
 ![](https://raw.githubusercontent.com/lgy582355443/myVue/master/wd-img/2.jpg)
 
